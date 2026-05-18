@@ -1,0 +1,39 @@
+{
+  "sample_size": 200000,
+  "n_features": 12,
+  "feature_names": [
+    "step",
+    "type_encoded",
+    "amount",
+    "oldbalanceOrg",
+    "newbalanceOrig",
+    "oldbalanceDest",
+    "newbalanceDest",
+    "balance_diff_orig",
+    "balance_diff_dest",
+    "orig_drained",
+    "dest_unchanged",
+    "is_merchant_dest"
+  ],
+  "feature_importances": {
+    "step": 0.0679,
+    "type_encoded": 0.0836,
+    "amount": 0.0839,
+    "oldbalanceOrg": 0.053,
+    "newbalanceOrig": 0.0769,
+    "oldbalanceDest": 0.0634,
+    "newbalanceDest": 0.0519,
+    "balance_diff_orig": 0.1647,
+    "balance_diff_dest": 0.0495,
+    "orig_drained": 0.2266,
+    "dest_unchanged": 0.0331,
+    "is_merchant_dest": 0.0455
+  },
+  "metrics": {
+    "auc_roc": 0.9991,
+    "precision": 0.6667,
+    "recall": 0.7586,
+    "f1": 0.7097
+  },
+  "trained_on_rows": 160000
+}
