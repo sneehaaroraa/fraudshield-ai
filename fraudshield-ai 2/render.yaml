@@ -1,0 +1,21 @@
+services:
+  # ── Backend API (FastAPI) ────────────────────────────────────────────────
+  - type: web
+    name: fraudshield-ai-backend
+    runtime: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        value: sqlite:///./fraudshield.db
+      - key: TOKEN_EXPIRE_MINUTES
+        value: "60"
+      - key: AUTO_SEED
+        value: "true"
+      - key: FRONTEND_ORIGIN
+        value: https://fraudshield-ai.vercel.app   # update after Vercel deploy
