@@ -121,7 +121,7 @@ pip install -r requirements.txt
 AUTO_SEED=true uvicorn backend.app:app --reload --port 8000
 ```
 
-API docs available at: **http://localhost:8000/docs**
+API docs available at: **https://fraudshield-bwfm.onrender.com/docs**
 
 ### 3. Train the ML model (optional)
 
@@ -181,7 +181,7 @@ The system blends ML predictions (70%) with rule-based scoring (30%). If the mod
 | `GET` | `/api/analytics/model-info` | ✅ | ML model metadata |
 | `GET` | `/api/health` | ❌ | Liveness probe |
 
-Interactive Swagger UI: `http://localhost:8000/docs`
+Interactive Swagger UI: `https://fraudshield-bwfm.onrender.com/docs`
 
 ---
 

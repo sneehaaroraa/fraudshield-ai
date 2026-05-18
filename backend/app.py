@@ -7,7 +7,7 @@ Run locally:
     uvicorn backend.app:app --reload --port 8000
 
 All routes are prefixed /api so the Vite proxy forwards them correctly:
-    vite.config.js → '/api': 'http://127.0.0.1:8000'
+    vite.config.js → '/api': 'https://fraudshield-bwfm.onrender.com'
 
 Route map:
     /api/auth/*          → auth_router      (register, login, /me)
