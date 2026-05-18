@@ -16,6 +16,7 @@ from contextlib import asynccontextmanager
 
 from backend.database.db import init_db
 from backend.routes import health, transactions, alerts, auth_router, analytics
+from backend.routes.ml_routes import router as ml_router
 
 
 @asynccontextmanager
@@ -44,3 +45,4 @@ app.include_router(health.router,       prefix="/api")
 app.include_router(transactions.router, prefix="/api/fraud")
 app.include_router(alerts.router,       prefix="/api/fraud")
 app.include_router(analytics.router,    prefix="/api/analytics")   # ← Phase 4
+app.include_router(ml_router,           prefix="/api")             # ← Phase 5 ML
