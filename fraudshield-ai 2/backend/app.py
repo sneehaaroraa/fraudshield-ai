@@ -21,14 +21,14 @@ Route map:
 import os
 from contextlib import asynccontextmanager
 
-from  fastapi import FastAPI
-from  fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from database.db import init_db
-from  routes.auth_router import router as auth_router
-from  routes.fraud_routes import router as fraud_router
-from  routes.analytics_routes import router as analytics_router
-from  routes.ml_routes import router as ml_router
+from routes.auth_router import router as auth_router
+from routes.fraud_routes import router as fraud_router
+from routes.analytics_routes import router as analytics_router
+from routes.ml_routes import router as ml_router
 
 
 @asynccontextmanager
