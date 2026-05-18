@@ -1,10 +1,6 @@
 """
-backend/database/db.py
-──────────────────────
-SQLAlchemy engine + session.
-
-SQLite is used for Phase 1 (zero setup).
-Swap to Postgres later by changing DATABASE_URL env var.
+Database engine and session factory.
+SQLite for local dev; swap DATABASE_URL env var for Postgres in production.
 """
 
 import os
@@ -13,30 +9,29 @@ from sqlalchemy.orm import sessionmaker, DeclarativeBase
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./fraudshield.db")
 
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False},  # required for SQLite + FastAPI
-    echo=False,  # flip to True to see raw SQL in terminal
-)
+# connect_args only needed for SQLite (disables same-thread check)
+connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
+
+engine = create_engine(DATABASE_URL, connect_args=connect_args, echo=False)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
 class Base(DeclarativeBase):
-    """All ORM models inherit from here."""
     pass
 
 
-def init_db():
-    """Register models then create all tables (safe to call multiple times)."""
-    from backend.models import transaction, alert  # noqa: F401
-    Base.metadata.create_all(bind=engine)
-
-
 def get_db():
-    """Yield a DB session per request, then close it."""
+    """FastAPI dependency: yields a DB session and closes it on exit."""
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
+
+
+def init_db():
+    """Create all tables if they don't exist. Called once on startup."""
+    # Import models so SQLAlchemy registers them before create_all
+    from backend.models import transaction_model, fraud_alert_model  # noqa: F401
+    Base.metadata.create_all(bind=engine)

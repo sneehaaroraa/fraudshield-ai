@@ -15,7 +15,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
 from backend.database.db import init_db
-from backend.routes import health, transactions, alerts, auth_router
+from backend.routes import health, transactions, alerts, auth_router, analytics
 
 
 @asynccontextmanager
@@ -39,7 +39,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(auth_router.router,  prefix="/api/auth")   # ← NEW: auth endpoints
+app.include_router(auth_router.router,  prefix="/api/auth")
 app.include_router(health.router,       prefix="/api")
 app.include_router(transactions.router, prefix="/api/fraud")
 app.include_router(alerts.router,       prefix="/api/fraud")
+app.include_router(analytics.router,    prefix="/api/analytics")   # ← Phase 4
