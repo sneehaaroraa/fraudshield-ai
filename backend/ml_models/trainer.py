@@ -24,7 +24,7 @@ from sklearn.metrics import (
 )
 import joblib
 
-from backend.ml_models.preprocessor import preprocess_for_training
+from  ml_models.preprocessor import preprocess_for_training
 
 # Paths
 BASE_DIR = Path(__file__).parent
@@ -106,7 +106,7 @@ def train(sample_size: int = SAMPLE_SIZE) -> dict:
     print(f"Metrics: {metrics}")
 
     # Feature importance
-    from backend.ml_models.preprocessor import get_feature_columns
+    from  ml_models.preprocessor import get_feature_columns
     feature_names = get_feature_columns()
     importances = dict(zip(
         feature_names,

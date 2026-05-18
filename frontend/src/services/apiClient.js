@@ -20,8 +20,12 @@ function getToken() {
   return null;
 }
 
+// In production (Vercel), VITE_API_BASE_URL points to the deployed backend.
+// In local dev, Vite proxies /api → localhost:8000 (see vite.config.js).
+const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '/api';
+
 export const apiClient = axios.create({
-  baseURL: '/api',
+  baseURL: BASE_URL,
   timeout: 10_000,
   headers: { 'Content-Type': 'application/json' },
 });

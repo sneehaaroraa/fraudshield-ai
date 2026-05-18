@@ -10,7 +10,7 @@ Roles:
 """
 
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, func
-from backend.database.db import Base
+from  database.db import Base
 
 
 class User(Base):

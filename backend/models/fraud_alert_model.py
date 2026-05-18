@@ -9,7 +9,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from backend.database.db import Base
+from  database.db import Base
 
 
 class AlertStatus:

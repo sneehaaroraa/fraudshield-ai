@@ -22,7 +22,7 @@ import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from  fastapi.middleware.cors import CORSMiddleware
 
 from database.db import init_db
 from routes.auth_router import router as auth_router
@@ -37,7 +37,7 @@ async def lifespan(app: FastAPI):
     init_db()
 
     if os.getenv("AUTO_SEED", "false").lower() == "true":
-        from backend.database.seed_data import seed
+        from  database.seed_data import seed
         seed()
 
     yield  # app runs here
@@ -51,14 +51,18 @@ app = FastAPI(
 )
 
 # ── CORS ────────────────────────────────────────────────────────────────────
+_allowed_origins = [
+    "http://localhost:5173",    # Vite dev server
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+]
+_frontend_origin = os.getenv("FRONTEND_ORIGIN", "")
+if _frontend_origin:
+    _allowed_origins.append(_frontend_origin)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",    # Vite dev server
-        "http://127.0.0.1:5173",
-        "http://localhost:3000",
-        os.getenv("FRONTEND_ORIGIN", ""),
-    ],
+    allow_origins=_allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

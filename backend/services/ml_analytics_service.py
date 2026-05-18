@@ -10,7 +10,7 @@ Provides ML-powered analytics endpoints:
 from __future__ import annotations
 from sqlalchemy import func, case, Float
 from sqlalchemy.orm import Session
-from backend.models.transaction_model import Transaction
+from  models.transaction_model import Transaction
 
 
 class MLAnalyticsService:

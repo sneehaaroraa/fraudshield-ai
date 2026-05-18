@@ -1,20 +1,49 @@
-# OS files
+# ── OS ──────────────────────────────────────────────────────────────────────
 .DS_Store
-Thumbs.db
+Thumbbs.db
+desktop.ini
 
-# Python
+# ── Python ──────────────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
 *$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
 .env
 venv/
 env/
+.venv/
 
-# Node
+# ── Node / Frontend ──────────────────────────────────────────────────────────
 node_modules/
-dist/
+frontend/dist/
+frontend/build/
 .eslintcache
+*.local
 
-# Database
+# ── Database ─────────────────────────────────────────────────────────────────
 *.sqlite3
 *.db
+fraudshield.db
+
+# ── ML Models (large binaries — tracked via Git LFS or excluded) ─────────────
+# Uncomment to exclude trained model from repo (re-train with: python -m backend.ml_models.trainer)
+# backend/ml_models/fraud_model.joblib
+
+# ── Secrets & Environment ────────────────────────────────────────────────────
+.env
+.env.local
+.env.production
+
+# ── IDE ──────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Misc ─────────────────────────────────────────────────────────────────────
+*.log
+*.zip
+!data/*.zip

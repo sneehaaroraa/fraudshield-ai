@@ -8,7 +8,7 @@
 import { apiClient } from './apiClient.js';
 
 /**
- * Fetch analytics summary from backend.
+ * Fetch analytics summary from  
  * Falls back to null if the backend isn't available yet.
  *
  * @returns {Promise<AnalyticsSummary | null>}
