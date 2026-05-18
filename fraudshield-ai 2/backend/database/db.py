@@ -33,5 +33,5 @@ def get_db():
 def init_db():
     """Create all tables if they don't exist. Called once on startup."""
     # Import models so SQLAlchemy registers them before create_all
-    from backend.models import transaction_model, fraud_alert_model, user  # noqa: F401
+    from  models import transaction_model, fraud_alert_model, user  # noqa: F401
     Base.metadata.create_all(bind=engine)

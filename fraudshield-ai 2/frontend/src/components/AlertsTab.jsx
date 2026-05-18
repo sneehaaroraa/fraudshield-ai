@@ -105,7 +105,7 @@ export function AlertsTab() {
       </div>
 
       {/* Loading / Error states */}
-      {loading && <LoadingState label="Loading alerts from backend..." />}
+      {loading && <LoadingState label="Loading alerts from  .." />}
       {error   && <ErrorState  message={`${error} — showing cached data if available`} />}
 
       {/* Main content */}

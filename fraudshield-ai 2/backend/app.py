@@ -21,14 +21,14 @@ Route map:
 import os
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from  fastapi import FastAPI
+from  fastapi.middleware.cors import CORSMiddleware
 
-from backend.database.db import init_db
-from backend.routes.auth_router import router as auth_router
-from backend.routes.fraud_routes import router as fraud_router
-from backend.routes.analytics_routes import router as analytics_router
-from backend.routes.ml_routes import router as ml_router
+from database.db import init_db
+from  routes.auth_router import router as auth_router
+from  routes.fraud_routes import router as fraud_router
+from  routes.analytics_routes import router as analytics_router
+from  routes.ml_routes import router as ml_router
 
 
 @asynccontextmanager
@@ -37,7 +37,7 @@ async def lifespan(app: FastAPI):
     init_db()
 
     if os.getenv("AUTO_SEED", "false").lower() == "true":
-        from backend.database.seed_data import seed
+        from  database.seed_data import seed
         seed()
 
     yield  # app runs here

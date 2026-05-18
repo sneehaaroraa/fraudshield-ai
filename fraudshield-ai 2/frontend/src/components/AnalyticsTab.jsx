@@ -86,7 +86,7 @@ export function AnalyticsTab() {
 
       {/* Live KPI cards */}
       {loading ? (
-        <LoadingState label="Fetching analytics from backend..." />
+        <LoadingState label="Fetching analytics from  .." />
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14, marginBottom: 20 }}>
           {kpis.map((s) => (

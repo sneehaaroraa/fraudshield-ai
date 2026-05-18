@@ -15,9 +15,9 @@ from pathlib import Path
 
 from sqlalchemy.orm import Session
 
-from backend.models.transaction_model import Transaction
-from backend.models.fraud_alert_model import FraudAlert as Alert
-from backend.fraud_engine.scorer import score
+from  models.transaction_model import Transaction
+from  models.fraud_alert_model import FraudAlert as Alert
+from  fraud_engine.scorer import score
 
 DATA_PATH = Path(__file__).parent.parent.parent / "data" / "transactions.json"
 

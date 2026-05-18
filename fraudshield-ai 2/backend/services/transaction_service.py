@@ -10,7 +10,7 @@ from typing import Optional
 from sqlalchemy.orm import Session
 from sqlalchemy import or_, asc, desc
 
-from backend.models.transaction_model import Transaction
+from  models.transaction_model import Transaction
 
 
 # Columns that can be used for sorting (allowlist prevents SQL injection)

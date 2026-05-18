@@ -19,9 +19,9 @@ from sqlalchemy.orm import Session
 from pydantic import BaseModel, Field
 from typing import Optional
 
-from backend.database.db import get_db
-from backend.services.fraud_prediction_service import fraud_predictor
-from backend.services.ml_analytics_service import MLAnalyticsService
+from  database.db import get_db
+from  services.fraud_prediction_service import fraud_predictor
+from  services.ml_analytics_service import MLAnalyticsService
 
 router = APIRouter(tags=["ML Analytics"])
 

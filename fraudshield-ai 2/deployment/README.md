@@ -3,7 +3,7 @@
 ## Local Docker
 
 ```bash
-# From project root:
+# from project root:
 cd frontend && npm run build      # builds to frontend/dist/
 docker build -f deployment/Dockerfile -t fraudshield-ai .
 docker run -p 8000:8000 \

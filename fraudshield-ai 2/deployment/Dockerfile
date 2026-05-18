@@ -2,7 +2,7 @@
 # Builds the FastAPI backend for production deployment.
 # Frontend is served as a static build (run: cd frontend && npm run build first).
 
-FROM python:3.11-slim
+from python:3.11-slim
 
 # Set working directory
 WORKDIR /app

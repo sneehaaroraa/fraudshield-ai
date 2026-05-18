@@ -15,9 +15,9 @@ from pydantic import BaseModel, EmailStr, field_validator
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 
-from backend.database.db import get_db
-from backend.models.user import User
-from backend.auth.jwt_handler import create_access_token, get_current_user
+from  database.db import get_db
+from  models.user import User
+from  auth.jwt_handler import create_access_token, get_current_user
 
 router  = APIRouter()
 pwd_ctx = CryptContext(schemes=["bcrypt"], deprecated="auto")
