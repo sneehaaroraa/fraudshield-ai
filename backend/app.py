@@ -50,6 +50,10 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+@app.get("/")
+def home():
+    return {"message": "FraudShield Backend Running"}
+
 # ── CORS ────────────────────────────────────────────────────────────────────
 _allowed_origins = [
     "http://localhost:5173",    # Vite dev server
