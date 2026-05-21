@@ -85,7 +85,7 @@ export function isAuthenticated() {
 // ── API calls ──────────────────────────────────────────────────────────────
 
 /**
- * POST /api/auth/login
+ * POST /https://fraudshield-bwfm.onrender.com/api/auth/login
  * Returns { access_token, user: { email, name, role } }
  */
 export async function loginApi({ email, password }) {
