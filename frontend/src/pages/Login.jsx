@@ -2,7 +2,7 @@
  * frontend/src/pages/Login.jsx
  * ──────────────────────────────
  * Upgraded from Phase 1 simulation to REAL auth:
- *   - Calls POST /api/auth/login or /api/auth/register
+ *   - Calls POST /api/auth/login or https://fraudshield-bwfm.onrender.com/register
  *   - Validates fields before submitting
  *   - Shows backend error messages
  *   - Password visibility toggle

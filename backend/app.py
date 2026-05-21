@@ -62,11 +62,7 @@ def home():
     return {"message": "FraudShield Backend Running"}
 
 # ── CORS ────────────────────────────────────────────────────────────────────
-_allowed_origins = [
-    "http://localhost:5173",    # Vite dev server
-    "http://127.0.0.1:5173",
-    "http://localhost:3000",
-]
+_allowed_origins = ["*"]
 _frontend_origin = os.getenv("FRONTEND_ORIGIN", "")
 if _frontend_origin:
     _allowed_origins.append(_frontend_origin)

@@ -1,7 +1,7 @@
 """
 backend/routes/auth_router.py
 ──────────────────────────────
-POST /api/auth/register  → create account, return JWT
+POST https://fraudshield-bwfm.onrender.com/register  → create account, return JWT
 POST /api/auth/login     → verify credentials, return JWT
 GET  /api/auth/me        → return profile of logged-in user (protected)
 

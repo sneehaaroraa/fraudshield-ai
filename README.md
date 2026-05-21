@@ -167,7 +167,7 @@ The system blends ML predictions (70%) with rule-based scoring (30%). If the mod
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| `POST` | `/api/auth/register` | ❌ | Create account, returns JWT |
+| `POST` | `https://fraudshield-bwfm.onrender.com/register` | ❌ | Create account, returns JWT |
 | `POST` | `/api/auth/login` | ❌ | Login, returns JWT |
 | `GET` | `/api/auth/me` | ✅ | Current user profile |
 | `GET` | `/api/fraud/transactions` | ✅ | Paginated transaction list |

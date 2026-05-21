@@ -94,7 +94,7 @@ export async function loginApi({ email, password }) {
 }
 
 /**
- * POST /api/auth/register
+ * POST https://fraudshield-bwfm.onrender.com/register
  * Returns { access_token, user: { email, name, role } }
  */
 export async function registerApi({ email, name, password, role = 'analyst' }) {
