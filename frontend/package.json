@@ -4,6 +4,9 @@
   "version": "2.0.0",
   "description": "FraudShield AI — Financial Fraud Detection Dashboard",
   "type": "module",
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
