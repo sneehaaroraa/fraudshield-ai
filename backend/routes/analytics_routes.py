@@ -14,10 +14,10 @@ from fastapi import APIRouter, Depends
 from sqlalchemy import func, case
 from sqlalchemy.orm import Session
 
-from  database.db import get_db
-from  models.transaction_model import Transaction
-from  models.fraud_alert_model import FraudAlert as Alert
-from  services.data_loader import seed_database
+from ..database.db import get_db
+from ..models.transaction_model import Transaction
+from ..models.fraud_alert_model import FraudAlert as Alert
+from ..services.data_loader import seed_database
 
 router = APIRouter()
 

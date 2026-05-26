@@ -28,7 +28,7 @@ ALGORITHM  = "HS256"
 EXPIRE_MIN = int(os.getenv("TOKEN_EXPIRE_MINUTES", "60"))
 
 # FastAPI reads the Bearer token from the Authorization header automatically
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/https://fraudshield-bwfm.onrender.com/api/auth/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 
 
 # ── Token creation ────────────────────────────────────────────────────────────

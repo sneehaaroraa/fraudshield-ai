@@ -5,13 +5,13 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
 
-  // Proxy /api → FastAPI backend during local development
-  // In production, VITE_API_BASE_URL points to the deployed backend
+  // Proxy /api → local FastAPI backend during local development.
+  // In production, VITE_API_BASE_URL points directly to the deployed backend.
   server: {
     port: 5173,
     proxy: {
       '/api': {
-        target: 'https://fraudshield-bwfm.onrender.com',
+        target: 'http://127.0.0.1:8000',
         changeOrigin: true,
         secure: false,
       },

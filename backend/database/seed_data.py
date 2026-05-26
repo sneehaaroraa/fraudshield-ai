@@ -17,10 +17,10 @@ from pathlib import Path
 # Allow running from project root
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from  database.db import SessionLocal, init_db
-from  models.transaction_model import Transaction
-from  models.fraud_alert_model import FraudAlert, AlertStatus
-from  fraud_engine.risk_scoring_engine import RiskScoringEngine
+from .db import SessionLocal, init_db
+from ..models.transaction_model import Transaction
+from ..models.fraud_alert_model import FraudAlert, AlertStatus
+from ..fraud_engine.risk_scoring_engine import RiskScoringEngine
 
 CSV_PATH = Path(__file__).resolve().parents[2] / "paysim_working.csv"
 BATCH_SIZE = 2000

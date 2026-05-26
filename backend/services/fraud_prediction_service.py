@@ -24,8 +24,8 @@ from typing import Any
 import joblib
 import pandas as pd
 
-from  ml_models.preprocessor import preprocess_single, get_feature_columns
-from  fraud_engine.risk_scoring_engine import RiskScoringEngine
+from ..ml_models.preprocessor import preprocess_single, get_feature_columns
+from ..fraud_engine.risk_scoring_engine import RiskScoringEngine
 
 BASE_DIR = Path(__file__).parent.parent / "ml_models"
 MODEL_PATH = BASE_DIR / "fraud_model.joblib"

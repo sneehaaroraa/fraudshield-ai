@@ -7,7 +7,7 @@ from sqlalchemy import (
     Column, Integer, String, Float, Boolean, DateTime, Text
 )
 from sqlalchemy.sql import func
-from  database.db import Base
+from ..database.db import Base
 
 
 class Transaction(Base):

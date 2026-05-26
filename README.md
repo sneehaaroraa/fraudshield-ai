@@ -121,7 +121,7 @@ pip install -r requirements.txt
 AUTO_SEED=true uvicorn backend.app:app --reload --port 8000
 ```
 
-API docs available at: **https://fraudshield-bwfm.onrender.com/docs**
+API docs available locally at: **http://127.0.0.1:8000/docs**
 
 ### 3. Train the ML model (optional)
 
@@ -167,8 +167,12 @@ The system blends ML predictions (70%) with rule-based scoring (30%). If the mod
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| `POST` | `https://fraudshield-bwfm.onrender.com/register` | ❌ | Create account, returns JWT |
-| `POST` | `/https://fraudshield-bwfm.onrender.com/api/auth/login` | ❌ | Login, returns JWT |
+| `POST` | `/api/auth/register` | ❌ | Create account, returns JWT |
+| `POST` | `/api/auth/login` | ❌ | Login, returns JWT |
+| `POST` | `/auth/register` | ❌ | Compatibility alias |
+| `POST` | `/auth/login` | ❌ | Compatibility alias |
+| `POST` | `/register` | ❌ | Compatibility alias |
+| `POST` | `/login` | ❌ | Compatibility alias |
 | `GET` | `/api/auth/me` | ✅ | Current user profile |
 | `GET` | `/api/fraud/transactions` | ✅ | Paginated transaction list |
 | `GET` | `/api/fraud/alerts` | ✅ | Paginated alert list |
@@ -181,7 +185,7 @@ The system blends ML predictions (70%) with rule-based scoring (30%). If the mod
 | `GET` | `/api/analytics/model-info` | ✅ | ML model metadata |
 | `GET` | `/api/health` | ❌ | Liveness probe |
 
-Interactive Swagger UI: `https://fraudshield-bwfm.onrender.com/docs`
+Interactive Swagger UI: `http://127.0.0.1:8000/docs`
 
 ---
 

@@ -4,8 +4,13 @@ SQLite for local dev; swap DATABASE_URL env var for Postgres in production.
 """
 
 import os
+from pathlib import Path
+
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
+
+load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./fraudshield.db")
 
@@ -33,5 +38,5 @@ def get_db():
 def init_db():
     """Create all tables if they don't exist. Called once on startup."""
     # Import models so SQLAlchemy registers them before create_all
-    from  models import transaction_model, fraud_alert_model, user  # noqa: F401
+    from ..models import transaction_model, fraud_alert_model, user  # noqa: F401
     Base.metadata.create_all(bind=engine)

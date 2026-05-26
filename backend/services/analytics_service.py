@@ -10,8 +10,8 @@ from __future__ import annotations
 from sqlalchemy.orm import Session
 from sqlalchemy import func, case
 
-from  models.transaction_model import Transaction
-from  models.fraud_alert_model import FraudAlert, AlertStatus
+from ..models.transaction_model import Transaction
+from ..models.fraud_alert_model import FraudAlert, AlertStatus
 
 
 class AnalyticsService:

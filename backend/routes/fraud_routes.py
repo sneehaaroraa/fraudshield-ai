@@ -17,10 +17,10 @@ from sqlalchemy.orm import Session
 from pydantic import BaseModel, Field
 from typing import Optional
 
-from  database.db import get_db
-from  services.transaction_service import TransactionService
-from  services.alert_service import AlertService
-from  fraud_engine.risk_scoring_engine import RiskScoringEngine
+from ..database.db import get_db
+from ..services.transaction_service import TransactionService
+from ..services.alert_service import AlertService
+from ..fraud_engine.risk_scoring_engine import RiskScoringEngine
 
 router = APIRouter(prefix="/fraud", tags=["Fraud"])
 
@@ -130,7 +130,7 @@ def update_alert_status(
     body: AlertStatusUpdate,
     db: Session = Depends(get_db),
 ):
-    from  models.fraud_alert_model import AlertStatus
+    from ..models.fraud_alert_model import AlertStatus
     if body.status not in AlertStatus.ALL:
         raise HTTPException(
             status_code=400,

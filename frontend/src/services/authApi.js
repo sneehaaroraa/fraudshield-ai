@@ -11,35 +11,9 @@
  * by the axios interceptor below.
  */
 
-import axios from 'axios';
+import { apiClient } from './apiClient';
 
 // ── Axios instance ─────────────────────────────────────────────────────────
-
-export const api = axios.create({
-  baseURL: '/api',
-  timeout: 10000,
-});
-
-// Attach the JWT token to every request automatically
-api.interceptors.request.use((config) => {
-  const token = getStoredToken();
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
-
-// If backend returns 401, clear stale token and reload to login
-api.interceptors.response.use(
-  (res) => res,
-  (err) => {
-    if (err.response?.status === 401) {
-      clearAuth();
-      window.location.reload(); // snap back to login
-    }
-    return Promise.reject(err);
-  }
-);
 
 // ── Token helpers ──────────────────────────────────────────────────────────
 
@@ -85,20 +59,20 @@ export function isAuthenticated() {
 // ── API calls ──────────────────────────────────────────────────────────────
 
 /**
- * POST /https://fraudshield-bwfm.onrender.com/api/auth/login
+ * POST /api/auth/login
  * Returns { access_token, user: { email, name, role } }
  */
 export async function loginApi({ email, password }) {
-  const { data } = await api.post('/auth/login', { email, password });
+  const { data } = await apiClient.post('/auth/login', { email, password });
   return data; // caller decides whether to save
 }
 
 /**
- * POST https://fraudshield-bwfm.onrender.com/register
+ * POST /api/auth/register
  * Returns { access_token, user: { email, name, role } }
  */
 export async function registerApi({ email, name, password, role = 'analyst' }) {
-  const { data } = await api.post('/auth/register', { email, name, password, role });
+  const { data } = await apiClient.post('/auth/register', { email, name, password, role });
   return data;
 }
 
@@ -108,6 +82,6 @@ export async function registerApi({ email, name, password, role = 'analyst' }) {
  * Call on app load to verify the token is still valid.
  */
 export async function meApi() {
-  const { data } = await api.get('/auth/me');
+  const { data } = await apiClient.get('/auth/me');
   return data;
 }
