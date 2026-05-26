@@ -19,3 +19,6 @@ services:
         value: "true"
       - key: FRONTEND_ORIGIN
         value: https://fraudshield-ai.vercel.app   # update after Vercel deploy
+      # Optional for Vercel preview deployments:
+      # - key: FRONTEND_ORIGIN_REGEX
+      #   value: https://.*\\.vercel\\.app

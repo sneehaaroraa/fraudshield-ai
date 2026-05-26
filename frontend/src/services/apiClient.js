@@ -3,7 +3,8 @@
  * ──────────────────────────
  * Single axios instance shared by all services.
  *
- * - baseURL points to /api → Vite proxies to FastAPI :8000
+ * - local dev uses /api → Vite proxy → FastAPI :8000
+ * - production uses VITE_API_BASE_URL or VITE_API_URL
  * - Automatically attaches JWT token from storage on every request
  * - On 401 → clears stale token and reloads to login screen
  */
@@ -20,9 +21,16 @@ function getToken() {
   return null;
 }
 
-// In production (Vercel), VITE_API_BASE_URL points to the deployed backend.
-// In local dev, Vite proxies /api → localhost:8000 (see vite.config.js).
-const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '/api';
+const rawBaseUrl = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || '/api';
+const BASE_URL = rawBaseUrl.replace(/\/+$/, '');
+
+if (import.meta.env.PROD && /^https?:\/\/(localhost|127\.0\.0\.1)(:|\/|$)/.test(BASE_URL)) {
+  // Keep the app running, but make a bad production env obvious in browser logs.
+  console.error(
+    `Invalid production API base URL: ${BASE_URL}. ` +
+      'Set VITE_API_BASE_URL to your deployed backend URL, for example https://fraudshield-ai-backend.onrender.com/api.',
+  );
+}
 
 export const apiClient = axios.create({
   baseURL: BASE_URL,
@@ -41,6 +49,11 @@ apiClient.interceptors.request.use((config) => {
 apiClient.interceptors.response.use(
   (res) => res,
   (err) => {
+    const method = err.config?.method?.toUpperCase() || 'REQUEST';
+    const url = `${err.config?.baseURL || ''}${err.config?.url || ''}`;
+    const status = err.response?.status || 'NETWORK';
+    console.error(`[API ${status}] ${method} ${url}`, err.response?.data || err.message);
+
     if (err.response?.status === 401) {
       ['fs_token', 'fs_user'].forEach((k) => {
         localStorage.removeItem(k);

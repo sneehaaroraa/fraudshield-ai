@@ -205,8 +205,15 @@ docker run -p 8000:8000 -e AUTO_SEED=true fraudshield-ai
 ```bash
 cd frontend && npm run build
 # Push to GitHub → import at vercel.com
-# Set env var: VITE_API_BASE_URL=https://your-backend.onrender.com/api
+# Set env var in Vercel:
+# VITE_API_BASE_URL=https://your-render-service.onrender.com/api
 ```
+
+For this monorepo, Vercel is configured from the repository root:
+- Install Command: `cd frontend && npm ci`
+- Build Command: `cd frontend && npm run build`
+- Output Directory: `frontend/dist`
+- Production branch: `main`
 
 ### Backend → Render
 

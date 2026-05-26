@@ -74,7 +74,9 @@ _allowed_origins = [
     for origin in _frontend_origin.split(",")
     if origin.strip() and origin.strip() != "*"
 ]
-_allow_origin_regex = ".*" if os.getenv("FRONTEND_ORIGIN", "").strip() == "*" else None
+_allow_origin_regex = os.getenv("FRONTEND_ORIGIN_REGEX")
+if os.getenv("FRONTEND_ORIGIN", "").strip() == "*":
+    _allow_origin_regex = ".*"
 
 app.add_middleware(
     CORSMiddleware,
